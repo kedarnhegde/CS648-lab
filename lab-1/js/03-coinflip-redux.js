@@ -4,8 +4,8 @@ for (let i = 0; i < 10; i++) {
   coinFlip = Math.floor(Math.random() * 2);
 
   if (coinFlip) {
-    document.write("Heads ");
-  } else {
     document.write("Tails ");
+  } else {
+    document.write("Heads ");
   }
 }
