@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>M2 Lab 2</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+    <script src="js/script.js"></script>
+    <style>
+        h1              {margin-bottom: 30px;}
+        label           {font-weight: bold;}
+        input, select   {margin-bottom: 10px;}
+        form            {width: 30%; padding: 20px;}
+    </style>
+</head>
+<body class="mt-2 ml-4">
+    <h1>Employee Management System</h1>
+    <form id="empForm" class="border rounded bg-light">
+
+    <label for="id">Employee ID</label>
+    <input type="text" id="id" class="form-control" maxlength="8" required>
+
+    <label for="name">Name</label>
+    <input type="text" id="name" class="form-control" required>
+
+    <label for="ext">Extension</label>
+    <input type="text" id="ext" class="form-control" maxlength="4" required>
+
+    <label for="email">Email</label>
+    <input type="email" id="email" class="form-control" required>
+
+    <label for="department">Department</label>
+    <select id="department" class="form-select" required>
+        <option value="" disabled selected>Select Department</option>
+        <option>Administrative</option>
+        <option>Engineering</option>
+        <option>Executive</option>
+        <option>Marketing</option>
+        <option>Quality Assurance</option>
+        <option>Sales</option>
+    </select>
+
+    <input type="submit" id="submit" class="btn btn-primary mt-3" value="Add Employee">
+
+</form>
+
+</body>
+</html>
