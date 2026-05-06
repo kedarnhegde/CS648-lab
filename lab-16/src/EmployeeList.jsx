@@ -33,7 +33,7 @@ class EmployeeRow extends React.Component {
             <Modal.Body>Are you sure you want to delete this employee?</Modal.Body>
             <Modal.Footer>
               <Button variant="danger" onClick={this.toggleModal}>Cancel</Button>
-              <Button variant="success" onClick={() => { deleteEmployee(employee.id); this.toggleModal(); }}>Yes</Button>
+              <Button variant="success" onClick={() => { deleteEmployee(employee._id); this.toggleModal(); }}>Yes</Button>
             </Modal.Footer>
           </Modal>
         </td>
@@ -44,7 +44,7 @@ class EmployeeRow extends React.Component {
 
 function EmployeeTable(props) {
   const employeeRows = props.employees.map(employee => (
-    <EmployeeRow key={employee.id} employee={employee} deleteEmployee={props.deleteEmployee} />
+    <EmployeeRow key={employee._id} employee={employee} deleteEmployee={props.deleteEmployee} />
   ));
 
   return (
@@ -69,41 +69,37 @@ export default class EmployeeList extends React.Component {
   constructor() {
     super();
     this.state = {
-      employees: [
-        {
-          id: 1,
-          name: 'Kedar Hegde',
-          extension: 101,
-          email: 'kedar.hegde@andpad.co.jp',
-          title: 'Developer',
-          dateHired: '2024-01-11',
-          currentStatus: 'Active',
-        },
-        {
-          id: 2,
-          name: 'Brett Lee',
-          extension: 102,
-          email: 'brett.lee@example.com',
-          title: 'Manager',
-          dateHired: '2023-08-15',
-          currentStatus: 'Active',
-        },
-      ],
+      employees: [],
     };
 
     this.createEmployee = this.createEmployee.bind(this);
     this.deleteEmployee = this.deleteEmployee.bind(this);
   }
 
-  deleteEmployee(id) {
-    this.setState({ employees: this.state.employees.filter(e => e.id !== id) });
+  componentDidMount() {
+    this.loadData();
   }
 
-  createEmployee(employee) {
-    employee.id = this.state.employees.length + 1;
-    const newEmployeeList = this.state.employees.slice();
-    newEmployeeList.push(employee);
-    this.setState({ employees: newEmployeeList });
+  async loadData() {
+    const response = await fetch('/api/employees');
+    const employees = await response.json();
+    this.setState({ employees });
+  }
+
+  async deleteEmployee(id) {
+    await fetch(`/api/employees/${id}`, {
+      method: 'DELETE',
+    });
+    this.loadData();
+  }
+
+  async createEmployee(employee) {
+    await fetch('/api/employees', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(employee),
+    });
+    this.loadData();
   }
 
   render() {
