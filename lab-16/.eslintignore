@@ -1,0 +1,6 @@
+node_modules/
+public/
+webpack.config.cjs
+jest.config.js
+__mocks__/
+coverage/
