@@ -1,0 +1,32 @@
+
+{
+  "name": "lab-16",
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "start": "nodemon app.js",
+    "watch": "webpack --watch",
+    "build": "webpack"
+  },
+  "dependencies": {
+    "bootstrap": "^5.3.8",
+    "dotenv": "^16.4.7",
+    "express": "^5.2.1",
+    "mongodb": "^7.2.0",
+    "react": "^18.3.1",
+    "react-bootstrap": "^2.10.10",
+    "react-dom": "^18.3.1"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.28.6",
+    "@babel/core": "^7.29.0",
+    "@babel/preset-env": "^7.28.5",
+    "@babel/preset-react": "^7.28.5",
+    "babel-loader": "^10.0.0",
+    "css-loader": "^7.1.4",
+    "nodemon": "^3.1.14",
+    "style-loader": "^4.0.0",
+    "webpack": "^5.99.9",
+    "webpack-cli": "^6.0.1"
+  }
+}
